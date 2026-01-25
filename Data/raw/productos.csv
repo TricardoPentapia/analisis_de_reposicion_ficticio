@@ -1,0 +1,45 @@
+producto_id,nombre_producto,categoria,marca,precio_venta,tiempo_entrega_dias
+ESM-001,Esmeriles Producto 1,Esmeriles,Generica,20632,4
+ESM-002,Esmeriles Producto 2,Esmeriles,Generica,16242,5
+ESM-003,Esmeriles Producto 3,Esmeriles,Generica,13593,3
+ESM-004,Esmeriles Producto 4,Esmeriles,Generica,15103,2
+ESM-005,Esmeriles Producto 5,Esmeriles,Generica,14820,3
+ESM-006,Esmeriles Producto 6,Esmeriles,Generica,21973,4
+ESM-007,Esmeriles Producto 7,Esmeriles,Generica,16903,3
+ESM-008,Esmeriles Producto 8,Esmeriles,Generica,18003,4
+ESM-009,Esmeriles Producto 9,Esmeriles,Generica,16024,3
+ESM-010,Esmeriles Producto 10,Esmeriles,Generica,19521,5
+DES-001,Destornilladores manuales Producto 1,Destornilladores manuales,Generica,13993,4
+DES-002,Destornilladores manuales Producto 2,Destornilladores manuales,Generica,18962,3
+DES-003,Destornilladores manuales Producto 3,Destornilladores manuales,Generica,7330,2
+DES-004,Destornilladores manuales Producto 4,Destornilladores manuales,Generica,7748,2
+DES-005,Destornilladores manuales Producto 5,Destornilladores manuales,Generica,17891,2
+DES-006,Destornilladores manuales Producto 6,Destornilladores manuales,Generica,12740,3
+DES-007,Destornilladores manuales Producto 7,Destornilladores manuales,Generica,12652,1
+DES-008,Destornilladores manuales Producto 8,Destornilladores manuales,Generica,13384,3
+DES-009,Destornilladores manuales Producto 9,Destornilladores manuales,Generica,19321,2
+DES-010,Destornilladores manuales Producto 10,Destornilladores manuales,Generica,15719,3
+DES-011,Destornilladores manuales Producto 11,Destornilladores manuales,Generica,12342,2
+DES-012,Destornilladores manuales Producto 12,Destornilladores manuales,Generica,7974,2
+DES-013,Destornilladores manuales Producto 13,Destornilladores manuales,Generica,18785,1
+DES-014,Destornilladores manuales Producto 14,Destornilladores manuales,Generica,10189,4
+DES-015,Destornilladores manuales Producto 15,Destornilladores manuales,Generica,17850,3
+TAL-001,Taladros Producto 1,Taladros,Generica,102257,4
+TAL-002,Taladros Producto 2,Taladros,Generica,101465,5
+TAL-003,Taladros Producto 3,Taladros,Generica,222221,2
+TAL-004,Taladros Producto 4,Taladros,Generica,57522,2
+TAL-005,Taladros Producto 5,Taladros,Generica,237453,5
+TAL-006,Taladros Producto 6,Taladros,Generica,249097,2
+TAL-007,Taladros Producto 7,Taladros,Generica,207086,2
+TAL-008,Taladros Producto 8,Taladros,Generica,114781,3
+SIE-001,Sierras electricas Producto 1,Sierras electricas,Generica,92201,3
+SIE-002,Sierras electricas Producto 2,Sierras electricas,Generica,195966,3
+SIE-003,Sierras electricas Producto 3,Sierras electricas,Generica,152529,4
+SIE-004,Sierras electricas Producto 4,Sierras electricas,Generica,158149,3
+SIE-005,Sierras electricas Producto 5,Sierras electricas,Generica,106837,2
+SIE-006,Sierras electricas Producto 6,Sierras electricas,Generica,121025,3
+CEP-001,Cepillos para madera Producto 1,Cepillos para madera,Generica,213724,6
+CEP-002,Cepillos para madera Producto 2,Cepillos para madera,Generica,60088,4
+CEP-003,Cepillos para madera Producto 3,Cepillos para madera,Generica,72226,7
+CEP-004,Cepillos para madera Producto 4,Cepillos para madera,Generica,96870,3
+CEP-005,Cepillos para madera Producto 5,Cepillos para madera,Generica,53657,7
