@@ -5,7 +5,6 @@ import pandas as pd
 np.random.seed(98)
 
 # configuración de categorias para obtener el codigo de cada producto
-
 configuracion_categorias = {
     "Esmeriles": {
         "prefijo": "ESM",
@@ -39,17 +38,15 @@ configuracion_categorias = {
     }
 }
 
-
-# --------------------------------------------------
 # Generación de productos
-# --------------------------------------------------
+
 productos = []
 
 for categoria, config in configuracion_categorias.items():
     for i in range(1, config["n_productos"] + 1):
 
         producto_id = f"{config['prefijo']}-{i:03d}"
-        precio_unitario = np.random.randint(*config["rango_precios"])
+        precio_unitario = np.round(np.random.randint(*config["rango_precios"]), -2)
         tiempo_entrega = np.random.randint(*config["tiempo_entrega_dias"])
 
         productos.append({
