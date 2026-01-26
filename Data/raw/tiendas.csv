@@ -1,0 +1,5 @@
+store_id,nombre_tienda,region,tipo_tienda
+S001,Sodimac Maipú,Metropolitana,Grande
+S002,Sodimac Concepción,Biobío,Grande
+S003,Sodimac Talca,Maule,Mediana
+S004,Sodimac Puerto Montt,Los Lagos,Mediana
