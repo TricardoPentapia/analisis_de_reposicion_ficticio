@@ -41,7 +41,6 @@ configuracion_categorias = {
 # Generación de productos
 
 productos = []
-
 for categoria, config in configuracion_categorias.items():
     for i in range(1, config["n_productos"] + 1):
 
@@ -58,9 +57,7 @@ for categoria, config in configuracion_categorias.items():
             "tiempo_entrega_dias": tiempo_entrega
         })
 
-# --------------------------------------------------
 # DataFrame y exportación
-# --------------------------------------------------
 productos_df = pd.DataFrame(productos)
 productos_df.to_csv("data/raw/productos.csv", index=False)
 
