@@ -1,6 +1,7 @@
 import pandas as pd
 from pathlib import Path
 import matplotlib.pyplot as plt
+import numpy as np 
 
 
 # cargamos las bases de inventario, productos, ventas y tiendas
@@ -51,3 +52,51 @@ for store_id in demanda_prom["store_id"].unique():
 
     plt.savefig(output_dir / f"demanda_categoria_tienda_{store_id}.png")
     plt.close()
+    
+# DOS (Days of Supply) | merge de inventario con demanda_prom ( ventas ) y con productos
+dos_df = (inventario.merge(demanda_prom, on=["store_id", "producto_id"], how="left")).merge(productos[["producto_id", "categoria"]], on="producto_id", how="left")
+
+# Calculo de stock total
+dos_df["stock_total"] = dos_df["stock_disponible"] + dos_df["stock_transito"]
+
+# Calculo del days of supply
+dos_df["dos"] = dos_df["stock_total"] / dos_df["demanda_promedio_diaria"]
+
+# gráfico de dos promedio por categoria
+for store_id in dos_df["store_id"]:
+    #agrupamos por tienda para el gráfico y sacamos el promedos del dos
+    dos_por_tienda  = (dos_df[dos["store_id"] == store_id].groupby("categoria")["dos"].mean().sort_values())
+    
+    #gráfico
+    plt.figure(figsize=(10, 5))
+    ax = dos_por_tienda.plot(kind="bar")
+    plt.axhline(7, linestyle="--", linewidth=1)
+    plt.axhline(20, linestyle="--", linewidth=1)
+    plt.title(f"dos promedio por categoria - tienda {store_id}") 
+    plt.ylabel("Días de cobertura")
+    plt.xlabel("Categoria")
+    plt.xticks(rotation=45, ha="rigth")
+    ax.bar_label(ax.containers[0], fmt="%.1f", padding=3)
+    plt.tight_layout()
+    plt.savefig(output_dir / f"dos_categoria_por_tienda_{store_id}.png")
+    plt.close()
+    
+# gráfico general
+dos_general = (dos_df.groupby("categoria")["days_of_supply"].mean().sort_values())
+plt.figure(figsize=(10, 5))
+ax = dos_general.plot(kind="bar")
+plt.title(f"Demanda promedio por categoria - general")
+plt.ylabel("Días de cobertura")
+plt.xlabel("Categoria")
+plt.xticks(rotation=45, ha="rigth")
+ax.bar_label(ax.containers[0],fmt="%.1f", padding=3)
+plt.tight_layout()
+plt.savefig(output_dir / f"dos_categoria_general.png")
+plt.close()
+
+# top 10 riesgo
+df_10_riesgo = dos_general.head(10)
+
+# ROP
+
+# EOQ
