@@ -54,18 +54,17 @@ for store_id in demanda_prom["store_id"].unique():
     plt.close()
     
 # DOS (Days of Supply) | merge de inventario con demanda_prom ( ventas ) y con productos
-dos_df = (inventario.merge(demanda_prom, on=["store_id", "producto_id"], how="left")).merge(productos[["producto_id", "categoria"]], on="producto_id", how="left")
-
+dos_df = (inventario.merge(demanda_prom, on=["store_id", "producto_id"], how="left"))
 # Calculo de stock total
 dos_df["stock_total"] = dos_df["stock_disponible"] + dos_df["stock_transito"]
 
 # Calculo del days of supply
-dos_df["dos"] = dos_df["stock_total"] / dos_df["demanda_promedio_diaria"]
-
+dos_df["dos"] = np.where(dos_df["demanda_promedio_diaria"] > 0, dos_df["stock_total"] / dos_df["demanda_promedio_diaria"], np.nan)
+print(dos_df.columns)
 # gráfico de dos promedio por categoria
-for store_id in dos_df["store_id"]:
+for store_id in dos_df["store_id"].unique():
     #agrupamos por tienda para el gráfico y sacamos el promedos del dos
-    dos_por_tienda  = (dos_df[dos["store_id"] == store_id].groupby("categoria")["dos"].mean().sort_values())
+    dos_por_tienda  = (dos_df[dos_df["store_id"] == store_id].groupby("categoria")["dos"].mean().sort_values())
     
     #gráfico
     plt.figure(figsize=(10, 5))
@@ -75,20 +74,20 @@ for store_id in dos_df["store_id"]:
     plt.title(f"dos promedio por categoria - tienda {store_id}") 
     plt.ylabel("Días de cobertura")
     plt.xlabel("Categoria")
-    plt.xticks(rotation=45, ha="rigth")
+    plt.xticks(rotation=45, ha="right")
     ax.bar_label(ax.containers[0], fmt="%.1f", padding=3)
     plt.tight_layout()
     plt.savefig(output_dir / f"dos_categoria_por_tienda_{store_id}.png")
     plt.close()
     
 # gráfico general
-dos_general = (dos_df.groupby("categoria")["days_of_supply"].mean().sort_values())
+dos_general = (dos_df.groupby("categoria")["dos"].mean().sort_values())
 plt.figure(figsize=(10, 5))
 ax = dos_general.plot(kind="bar")
 plt.title(f"Demanda promedio por categoria - general")
 plt.ylabel("Días de cobertura")
 plt.xlabel("Categoria")
-plt.xticks(rotation=45, ha="rigth")
+plt.xticks(rotation=45, ha="right")
 ax.bar_label(ax.containers[0],fmt="%.1f", padding=3)
 plt.tight_layout()
 plt.savefig(output_dir / f"dos_categoria_general.png")
