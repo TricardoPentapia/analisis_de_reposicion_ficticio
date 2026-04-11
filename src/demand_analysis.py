@@ -60,7 +60,7 @@ dos_df["stock_total"] = dos_df["stock_disponible"] + dos_df["stock_transito"]
 
 # Calculo del days of supply
 dos_df["dos"] = np.where(dos_df["demanda_promedio_diaria"] > 0, dos_df["stock_total"] / dos_df["demanda_promedio_diaria"], np.nan)
-print(dos_df.columns)
+
 # gráfico de dos promedio por categoria
 for store_id in dos_df["store_id"].unique():
     #agrupamos por tienda para el gráfico y sacamos el promedos del dos
@@ -69,8 +69,8 @@ for store_id in dos_df["store_id"].unique():
     #gráfico
     plt.figure(figsize=(10, 5))
     ax = dos_por_tienda.plot(kind="bar")
-    plt.axhline(7, linestyle="--", linewidth=1)
-    plt.axhline(20, linestyle="--", linewidth=1)
+    plt.axhline(7, linestyle="--", linewidth=1) # linea para marcar 7 días de supply
+    plt.axhline(20, linestyle="--", linewidth=1) # linea para marcar 20 días de supply 
     plt.title(f"dos promedio por categoria - tienda {store_id}") 
     plt.ylabel("Días de cobertura")
     plt.xlabel("Categoria")
