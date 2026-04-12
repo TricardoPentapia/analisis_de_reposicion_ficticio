@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np 
-
+import math
 
 # cargamos las bases de inventario, productos, ventas y tiendas
 inventario = pd.read_csv("data/raw/inventario.csv")
@@ -97,5 +97,16 @@ plt.close()
 df_10_riesgo = dos_general.head(10)
 
 # ROP
+df_reorder = dos_df.merge(productos[["producto_id", "tiempo_entrega_dias"]], on="producto_id", how="left")
+df_reorder["reorder_point"] = (df_reorder["demanda_promedio_diaria"] * df_reorder["tiempo_entrega_dias"])
+df_reorder["accion"] = np.where(df_reorder["stock_total"] <= df_reorder["reorder_point"], "Reordenar", "ok")
 
-# EOQ
+# Cantidad a pedir
+dias_de_cobertura_obj = 20 # supondremos que buscaremos un inventario para unos 20 dias app
+df_reorder["stock_objetivo"] = np.ceil((df_reorder["demanda_promedio_diaria"] * dias_de_cobertura_obj))
+df_reorder["cantidad_pedir"] = np.ceil(df_reorder["stock_objetivo"] - df_reorder["stock_total"]).clip(lower=0)
+
+# export del df de reorder
+df_reorder.to_csv("outputs/reporte_reposición_final.csv", index=False)
+
+
