@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np 
-import math
+
 
 # cargamos las bases de inventario, productos, ventas y tiendas
 inventario = pd.read_csv("data/raw/inventario.csv")
@@ -108,5 +108,3 @@ df_reorder["cantidad_pedir"] = np.ceil(df_reorder["stock_objetivo"] - df_reorder
 
 # export del df de reorder
 df_reorder.to_csv("outputs/reporte_reposición_final.csv", index=False)
-
-
