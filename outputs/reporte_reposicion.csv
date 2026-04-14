@@ -1,4 +1,4 @@
-fecha,store_id,producto_id,stock_disponible,stock_transito,demanda_promedio_diaria,demanda_std_diaria,categoria,tiempo_entrega_dias,precio_venta,stock_total,days_of_supply,stock_seguridad,reorder_point,stock_objetivo,cantidad_pedir,accion
+fecha,store_id,producto_id,stock_disponible,stock_transito,demanda_promedio_diaria,demanda_std_diaria,categoria,tiempo_entrega_dias,costo_unitario,stock_total,days_of_supply,stock_seguridad,reorder_point,stock_objetivo,cantidad_pedir,accion
 2024-03-30,S001,CEP-001,16,7,1.1777777777777778,0.6103559060784894,Cepillos para madera,6,213700,23,19.528301886792452,2.0,9.066666666666666,19.666666666666668,0.0,OK
 2024-03-30,S001,CEP-002,21,4,1.1222222222222222,0.6675088313648461,Cepillos para madera,4,60100,25,22.277227722772277,2.0,6.488888888888889,18.833333333333332,0.0,OK
 2024-03-30,S001,CEP-003,15,0,1.1555555555555554,0.6689100829903017,Cepillos para madera,7,72200,15,12.980769230769232,3.0,11.088888888888889,20.333333333333332,5.0,OK
